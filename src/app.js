@@ -19,7 +19,7 @@ app.set("view engine", "pug");
 //Router
 route(app);
 app.use((req, res) => {
-  return res.status(404).send({ message: "NOT FOUND" });
+      return res.status(404).send({ message: "NOT FOUND" });
 });
 
 app.listen(port, () => {
