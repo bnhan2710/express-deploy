@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Pizza",
+      "price": "10",
+      "quantity": "7"
+    },
+    {
+      "id": "2",
+      "name": "Hamburguer",
+      "price": "10",
+      "quantity": "2"
+    },
+    {
+      "id": "3",
+      "name": "Bacon",
+      "price": "6",
+      "quantity": "2"
+    },
+    {
+      "name": "Bread",
+      "price": "2",
+      "quantity": "3",
+      "id": "4"
+    }
+  ]
+}
