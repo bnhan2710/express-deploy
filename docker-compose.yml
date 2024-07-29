@@ -14,8 +14,7 @@ services:
     depends_on:
       - mysqldb
     build:
-      context: .
-      dockerfile: Dockerfile
+    images: bnhan2710/s-devops
     restart: unless-stopped
     environment:
       - PORT=${PORT}

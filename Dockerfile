@@ -10,8 +10,6 @@ RUN npm install
 
 COPY . .
 
-COPY .env .env
-
 EXPOSE 8000
 
 # Start the application
