@@ -12,17 +12,15 @@ services:
 
   app:
     depends_on:
-      - mysqldb
-    build:
-    images: bnhan2710/s-devops
+      - mysqldb  
+    image: bnhan2710/s-devops  
     restart: unless-stopped
     environment:
       - PORT=${PORT}
-      - DB_HOST=host.docker.internal
+      - DB_HOST=mysqldb
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
       - SECRET_KEY=${SECRET_KEY}
     ports:
       - "8000:8000"
-
