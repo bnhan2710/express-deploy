@@ -12,6 +12,7 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(cookieParser())
 app.use(express.static("public"));
+
 //view engine
 app.set("views", "./views");
 app.set("view engine", "pug");
