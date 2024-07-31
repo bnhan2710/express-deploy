@@ -24,3 +24,21 @@ jobs:
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/s-devops:latest
+  deploy:
+    need: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Create SSH .pem key file
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/ec2_key.pem && chmod 600 ~/.ssh/ec2_key.pem
+
+      - name: SSH to EC2 instance
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ~/.ssh/ec2_key.pem
+          
