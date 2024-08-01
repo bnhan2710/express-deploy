@@ -2,7 +2,7 @@ name: CI/CD pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ ci-cd ]
 
 jobs:
   build:
@@ -29,8 +29,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: SSH to EC2 instance
-        uses: appleboy/ssh-action@v0.1.6
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
@@ -41,6 +44,7 @@ jobs:
 
       - name: Stop, remove and run new container
         run: |
+          cd /home/ubuntu
          pwd 
          docker stop myapp-container || true
          docker rm myapp-container || true
