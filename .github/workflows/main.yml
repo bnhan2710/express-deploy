@@ -29,24 +29,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
       - name: SSH to EC2 instance
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }} 
 
       - name: Pull Docker image
         run: docker pull ${{ secrets.DOCKER_USERNAME }}/s-devops:latest
 
       - name: Stop, remove and run new container
         run: |
-          docker stop myapp-container || true
-          docker rm myapp-container || true
-          docker run -d --name myapp-container --network my_network \
+         sudo docker stop myapp-container || true
+         sudo docker rm myapp-container || true
+         sudo docker run -d --name myapp-container --network my_network \
             -e PORT=8000 \
             -e DB_HOST=mysql-container \
             -e DB_USER=${{ secrets.DB_USER }} \
