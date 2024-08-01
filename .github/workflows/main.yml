@@ -41,6 +41,7 @@ jobs:
 
       - name: Stop, remove and run new container
         run: |
+         cd home/ubuntu/
          pwd && ls
          docker stop myapp-container || true
          docker rm myapp-container || true
