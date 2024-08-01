@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: SSH to EC2 instance
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
@@ -41,8 +41,7 @@ jobs:
 
       - name: Stop, remove and run new container
         run: |
-         cd home/ubuntu/
-         pwd && ls
+         pwd 
          docker stop myapp-container || true
          docker rm myapp-container || true
          docker run -d --name myapp-container --network my_network \
