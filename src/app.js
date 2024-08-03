@@ -17,6 +17,11 @@ app.use(express.static("public"));
 app.set("views", "./views");
 app.set("view engine", "pug");
 
+route.get("/", (req, res) => {
+  res.send("Hello World");
+})
+
+
 //Router
 route(app);
 app.use((req, res) => {
