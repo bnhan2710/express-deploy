@@ -18,7 +18,7 @@ app.set("views", "./views");
 app.set("view engine", "pug");
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Hello");
 })
 
 
